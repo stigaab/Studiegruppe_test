@@ -32,6 +32,19 @@ class Plastikbeholder(Affaldsbeholder):
     def fra_beholder(cls, beholder, farve, genanvendelsesgrad):
         return cls(beholder.id_nummer, beholder.kapacitet, beholder.type_affald, farve, genanvendelsesgrad)
 
+# Opret en affaldsbeholder
+b1 = Affaldsbeholder("A101", 120, "Restaffald")
+print(b1)
+
+# Opret en plastikbeholder direkte
+p1 = Plastikbeholder("P202", 240, "Plastik", "Gul", 80)
+print(p1)
+
+# Opret en plastikbeholder ud fra en eksisterende beholder
+p2 = Plastikbeholder.fra_beholder(b1, "Blå", 90)
+print(p2)
+
+
     def __str__(self):
         return (f"ID: {self.id_nummer}, Kapacitet: {self.kapacitet} L, "
                 f"Type: {self.type_affald}, Farve: {self.farve}, "
