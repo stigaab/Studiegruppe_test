@@ -1,0 +1,38 @@
+class Affaldsbeholder:
+    def __init__(self, id_nummer, kapacitet, type_affald):
+        self.id_nummer = id_nummer
+        self.kapacitet = kapacitet   # kalder setter nedenfor
+        self.type_affald = type_affald
+
+    @property
+    def kapacitet(self) -> int:
+        return self._kapacitet
+
+    @kapacitet.setter
+    def kapacitet(self, value):
+        try:
+            value = int(value)   # sikrer at kapacitet er heltal
+        except (TypeError, ValueError):
+            raise TypeError("Kapacitet skal være et heltal")
+        if value <= 0:
+            raise ValueError("Kapacitet skal være positiv")
+        self._kapacitet = value
+
+    def __str__(self):
+        return f"ID: {self.id_nummer}, Kapacitet: {self.kapacitet} L, Type: {self.type_affald}"
+
+
+class Plastikbeholder(Affaldsbeholder):
+    def __init__(self, id_nummer, kapacitet, type_affald, farve, genanvendelsesgrad):
+        super().__init__(id_nummer, kapacitet, type_affald)
+        self.farve = farve
+        self.genanvendelsesgrad = genanvendelsesgrad
+
+    @classmethod
+    def fra_beholder(cls, beholder, farve, genanvendelsesgrad):
+        return cls(beholder.id_nummer, beholder.kapacitet, beholder.type_affald, farve, genanvendelsesgrad)
+
+    def __str__(self):
+        return (f"ID: {self.id_nummer}, Kapacitet: {self.kapacitet} L, "
+                f"Type: {self.type_affald}, Farve: {self.farve}, "
+                f"Genanvendelsesgrad: {self.genanvendelsesgrad}%")
