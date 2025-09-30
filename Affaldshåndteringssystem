@@ -46,6 +46,8 @@ print(p2)
 
 
     def __str__(self):
-        return (f"ID: {self.id_nummer}, Kapacitet: {self.kapacitet} L, "
-                f"Type: {self.type_affald}, Farve: {self.farve}, "
-                f"Genanvendelsesgrad: {self.genanvendelsesgrad}%")
+    return (
+        f"ID: {self.id_nummer}, Kapacitet: {self.kapacitet} L, "
+        f"Type: {self.type_affald}, Farve: {self.farve}, "
+        f"Genanvendelsesgrad: {self.genanvendelsesgrad}%"
+    )
